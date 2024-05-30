@@ -10,8 +10,7 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const apiRoutes = require('.routes/api');
-const { prototype } = require('events');
+const apiRoutes = require('./routes/api');
 app.use('/api', apiRoutes);
 
 app.get('/notes', (req, res)=> {
@@ -19,7 +18,7 @@ app.get('/notes', (req, res)=> {
 });
 
 app.get('*', (req, res) => {
-    res.sendfile(path.join(__dirname, 'pbulic', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(PORT, console.log(`App Listening on http://localhost:${PORT}`));
