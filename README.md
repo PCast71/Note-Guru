@@ -1,23 +1,38 @@
-# Note-Guru
+# 📝 Note-Guru
 
-This is a note-taking application that uses Express.js, node.js and basic Javascript that will create, view and delete any notes a user might need.
+Note-Guru is a full-stack note-taking application built with **Node.js**, **Express**, and **Bootstrap**. It allows users to create, save, and delete notes, using a local JSON file to simulate backend persistence.
 
-## Table of Contents
+This project showcases:
+
+- RESTful API architecture
+- Dynamic front-end rendering
+- Clean, responsive UI
+- Keyboard shortcuts + validation
+- Toast-style feedback for user actions
+
+---
+
+## 📦 Table of Contents
 
 - [Installation](#installation)
-- [Usage](#Usage)
+- [Usage](#usage)
+- [Features](#features)
 - [Technologies Used](#technologies-used)
+- [Screenshots](#screenshots)
 - [License](#license)
 
-## Installation
+---
 
-Follow the steps below to see note-guru in action!
+## 🚀 Installation
 
-1. Clone Note-Guru repoository:
-   git clone https://github.com/PCast71/Note-Taker
+Clone and run Note-Guru locally:
 
-2. Navigate to project directory -'cd note-guru'
-3. install dependencies -'npm install'
+```bash
+git clone https://github.com/PCast71/Note-Taker
+cd Note-Taker
+npm install
+npm start
+
 
 ## Usage
 
@@ -25,11 +40,41 @@ Follow the steps below to see note-guru in action!
 2. open web browser and navigate to 'http://localhost:3001'
 3. Start taking notes!
 
-## Technologies used
-- Node.js
-- Express.js
-- bootstrap
+
+
+## 🧠 Features
+Full CRUD operations via RESTful API
+
+Clean Bootstrap layout
+
+Input validation (no empty notes allowed)
+
+Toast notifications for saves/deletes
+
+Keyboard shortcut: Ctrl+S / Cmd+S to save notes
+
+Responsive and scrollable layout
+
+Saved notes persist in db.json locally
+
+
+
+## 💻 Technologies Used
+Node.js
+
+Express.js
+
+Bootstrap 5
+
+Font Awesome (icons)
+
+Vanilla JavaScript
+
+JSON for file-based persistence
+
+
 
 ## License
 
 This project is licencsed under the MIT Licesnse. see the LICENSE file for details.
+```
