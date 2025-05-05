@@ -1,63 +1,101 @@
+/* Base Reset */
 html,
 body {
   height: 100%;
   margin: 0;
   padding: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  background-color: #f8f9fa;
 }
 
-.save-note, .new-note, .clear-btn {
-  display: none;
-}
-
+/* Navbar Button Icons */
 .icons {
-  margin-left: 15px;
-  margin-right: 15px;
-  font-size: 1.5rem;
-  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  margin-right: 20px;
 }
 
-.note-textarea,
+.icons button {
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.list-group-item:only-child {
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* Form Section */
+.note-form {
+  padding: 20px;
+}
+
 .note-title {
-  color: #000000;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-weight: bold;
   width: 100%;
   outline: none;
   border: none;
 }
 
 .note-textarea {
-  resize: none;
-  height: calc(100% - 63px);
-  padding-top: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  height: 300px;
+  resize: vertical;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
 }
 
-.note-title {
-  height: 50px;
-  margin-top: 13px;
-  font-size: 3rem;
-}
-
+/* Read-only style for existing notes */
 .note-title:read-only,
 .note-textarea:read-only {
   color: #757575;
+  background-color: #f1f1f1;
+}
+
+/* Saved Notes Sidebar */
+.list-container {
+  padding-left: 0;
 }
 
 .list-container .card {
   height: calc(100vh - 70px);
-  border-bottom: none;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+  overflow-y: auto;
+  border-radius: 0;
 }
 
-.list-container {
-  padding-left: 0;
+.list-container .card-header {
+  font-weight: bold;
+  font-size: 1rem;
 }
 
 .list-container .list-group,
 .list-container .list-group-item:first-child,
 .list-container .card {
   border-top: none;
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.list-group-item:hover {
+  background-color: #f1f1f1;
+  transform: scale(1.01);
 }
 
 .list-item-title {
@@ -65,14 +103,29 @@ body {
   width: 75%;
 }
 
+/* Icons */
 .list-container i {
   font-size: 1.1rem;
-  cursor: pointer;
+  color: #dc3545;
 }
 
-.list-container .list-group-item {
-  border-left: none;
-  border-right: none;
-  padding: 20px;
-  cursor: pointer;
+.list-container i:hover {
+  opacity: 0.8;
+}
+
+/* Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.list-group-item {
+  animation: fade-in 0.3s ease;
 }

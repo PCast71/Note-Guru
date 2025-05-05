@@ -74,13 +74,21 @@ const renderActiveNote = () => {
 
 const handleNoteSave = () => {
   const newNote = {
-    title: noteTitle.value,
-    text: noteText.value
-  };
-  saveNote(newNote).then(() => {
-    getAndRenderNotes();
-    renderActiveNote();
-  });
+  title: noteTitle.value.trim(),
+  text: noteText.value.trim()
+};
+
+if (!newNote.title || !newNote.text) {
+  alert("Please fill out both the title and the text of your note.");
+  return;
+}
+
+saveNote(newNote).then(() => {
+  getAndRenderNotes();
+  renderActiveNote();
+  showToast("Note saved!");
+});
+
 };
 
 // Delete the clicked note
@@ -96,9 +104,11 @@ const handleNoteDelete = (e) => {
   }
 
   deleteNote(noteId).then(() => {
-    getAndRenderNotes();
-    renderActiveNote();
-  });
+  getAndRenderNotes();
+  renderActiveNote();
+  showToast("Note deleted.");
+});
+
 };
 
 // Sets the activeNote and displays it
@@ -111,8 +121,10 @@ const handleNoteView = (e) => {
 // Sets the activeNote to and empty object and allows the user to enter a new note
 const handleNewNoteView = (e) => {
   activeNote = {};
-  show(clearBtn);
-  renderActiveNote();
+show(clearBtn);
+renderActiveNote();
+noteTitle.focus();
+
 };
 
 // Renders the appropriate buttons based on the state of the form
@@ -192,3 +204,37 @@ if (window.location.pathname === '/notes') {
 }
 
 getAndRenderNotes();
+
+function showToast(message) {
+  const toast = document.createElement('div');
+  toast.textContent = message;
+  toast.style.position = 'fixed';
+  toast.style.bottom = '20px';
+  toast.style.left = '50%';
+  toast.style.transform = 'translateX(-50%)';
+  toast.style.backgroundColor = '#198754';
+  toast.style.color = 'white';
+  toast.style.padding = '10px 20px';
+  toast.style.borderRadius = '5px';
+  toast.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+  toast.style.zIndex = '1000';
+  toast.style.opacity = '0';
+  toast.style.transition = 'opacity 0.3s ease';
+
+  document.body.appendChild(toast);
+  setTimeout(() => (toast.style.opacity = '1'), 10);
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    setTimeout(() => toast.remove(), 300);
+  }, 2000);
+}
+
+document.addEventListener('keydown', (e) => {
+  const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+  if ((isMac ? e.metaKey : e.ctrlKey) && e.key === 's') {
+    e.preventDefault();
+    if (window.location.pathname === '/notes') {
+      handleNoteSave();
+    }
+  }
+});
