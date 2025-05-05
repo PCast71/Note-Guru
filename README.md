@@ -32,49 +32,42 @@ git clone https://github.com/PCast71/Note-Taker
 cd Note-Taker
 npm install
 npm start
+```
 
+---
 
-## Usage
+## 📄 Usage
 
-1. Start your servers! with 'node server.js'
-2. open web browser and navigate to 'http://localhost:3001'
+1. Start your server with `npm start`
+2. Open your browser and go to `http://localhost:3001/notes`
 3. Start taking notes!
 
-
+---
 
 ## 🧠 Features
-Full CRUD operations via RESTful API
 
-Clean Bootstrap layout
+- Full CRUD operations via RESTful API
+- Clean Bootstrap layout
+- Input validation (no empty notes allowed)
+- Toast notifications for saves/deletes
+- Keyboard shortcut: Ctrl+S / Cmd+S to save notes
+- Responsive and scrollable layout
+- Saved notes persist in `db.json` locally
 
-Input validation (no empty notes allowed)
-
-Toast notifications for saves/deletes
-
-Keyboard shortcut: Ctrl+S / Cmd+S to save notes
-
-Responsive and scrollable layout
-
-Saved notes persist in db.json locally
-
-
+---
 
 ## 💻 Technologies Used
-Node.js
 
-Express.js
+- Node.js
+- Express.js
+- Bootstrap 5
+- Font Awesome (icons)
+- Vanilla JavaScript
+- JSON for file-based persistence
 
-Bootstrap 5
+---
 
-Font Awesome (icons)
+## 📄 License
 
-Vanilla JavaScript
-
-JSON for file-based persistence
-
-
-
-## License
-
-This project is licencsed under the MIT Licesnse. see the LICENSE file for details.
-```
+This project is licensed under the MIT License.
+See the [LICENSE](./LICENSE) file for details.
